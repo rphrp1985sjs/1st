@@ -1,0 +1,90 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+public static void main (String[] args) throws java.lang.Exception
+{
+// your code goes here
+// Scanner sc = new Scanner(System.in);
+// int t = sc.nextInt();
+BufferedReader br = new BufferedReader(new InputStreamReader (System.in));
+          int t= Integer.parseInt(br.readLine());
+while(t-->0) {
+ //  int n = sc.nextInt();
+ //  int m = sc.nextInt();
+ String [] abn = br.readLine().trim().split(" ");
+int n= Integer.parseInt(abn[0]);
+int m= Integer.parseInt(abn[1]);
+ 
+  // System.out.println(n+" "+m);
+  int arr[] = new int[n+1];
+  String [] abm = br.readLine().trim().split(" ");
+  
+  int dp[] = new int[n+1];
+  int x = -1;
+  for(int i =1; i <= n; i++) {
+      // arr[i] = sc.nextInt();
+      arr[i] = Integer.parseInt(abm[i-1]);
+       
+      if(arr[i] == 1)
+      x =i;
+       
+      if(x == -1) {
+          dp[i]=-1;
+      } else {
+          dp[i] = i-x;
+           
+      }
+  }
+    x =-1;
+    for(int i =n; i >0; i--) {
+        int temp;
+        if(arr[i] == 2)
+        x =i;
+       
+        if(x != -1) {
+            temp = x-i;
+            if(temp < dp[i] || dp[i] ==-1)
+            dp[i] = temp;
+        }
+    }
+   
+         dp[1] = 0;
+         
+         String [] abp = br.readLine().trim().split(" ");
+         for(int i =0; i <m; i++) {
+             //int y = sc.nextInt();
+              int y = Integer.parseInt(abp[i]);
+             System.out.print(dp[y] + " " );
+             
+         }
+          System.out.println();
+} 
+    
+    
+    
+    
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    
+}
+
+    
+    
+    
+    
+    
+    
+    
+}
